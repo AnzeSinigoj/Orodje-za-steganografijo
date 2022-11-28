@@ -8,7 +8,7 @@ sg.theme('DarkAmber')
 def g_encode():
     layout = [ [sg.Text('Datoteka za enkodiranje'), sg.FileBrowse()],[sg.Text('Sporočilo za enkodiranje'), sg.InputText()],[sg.Button('Enkodiraj!'), sg.Stretch(), sg.Button('Izhod')] ]
 
-    okno2Layout = [ [sg.Text("Shrani sliko kot (z končnico): "), sg.InputText()], [sg.Button("Shrani!")] ]
+    okno2Layout = [ [sg.Text("Shrani sliko kot (s končnico): "), sg.InputText()], [sg.Button("Shrani!")] ]
 
     okno3Layout = [ [sg.Text("Encoding sucesfull!")], [sg.Button("Exit")] ]
 
@@ -22,7 +22,7 @@ def g_encode():
             sys.exit()
         elif event == 'Enkodiraj!':
             okno.close()
-            okno2 = sg.Window("Save as", okno2Layout, element_justification='c')
+            okno2 = sg.Window("Shrani kot", okno2Layout, element_justification='c')
             event2, values2 = okno2.read()
             if event2 == "Shrani!":
                 encode(values["Browse"], values[0], values2[0])
@@ -55,9 +55,9 @@ def g_decode():
                 sys.exit()
 
 def glavnoOkno():
-    ly = [ [sg.Button('Enkodiranje')], [sg.Button('Dekodiranje')], [sg.Button('Izhod')]]
+    ly = [ [sg.Text("Orodje za steganografijo.", font=("Impact, 16"))], [sg.Button('Enkodiranje')], [sg.Button('Dekodiranje')], [sg.Button('Izhod', size=(10,9))]]
 
-    okno = sg.Window("Meni", ly, element_justification='c')
+    okno = sg.Window("Meni", ly, size=(300, 150), element_justification='c')
     while True:
         event2, values2  = okno.read()
         if event2 == sg.WIN_CLOSED or event2 == 'Izhod':
