@@ -67,8 +67,11 @@ def encode(img, data, new_img_name):
 	newimg = image.copy()
 	encode_enc(newimg, data)
 
-	newimg.save(new_img_name, str(new_img_name.split(".")[1].upper()))
+	splitArr = img.split(".")
+	koncnica = splitArr[-1]
 
+	print(koncnica)
+	newimg.save(f"{new_img_name}.{koncnica}")
 
 def decode(img):
 	image = Image.open(img, 'r')
